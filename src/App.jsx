@@ -24,6 +24,7 @@ export default function Board() {
   }
 
   function handleClick(index) {
+    if (squares[index]) return;
     const nextSquares = squares.slice();
     nextSquares[index] = nextSymbol;
     setSquares(nextSquares);

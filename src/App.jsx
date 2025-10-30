@@ -29,8 +29,6 @@ function calculateWinner(squares) {
 }
 
 function Board({ nextSymbol, squares, onPlay }) {
-  // const [squares, setSquares] = useState(Array(9).fill(null));
-
   const winner = calculateWinner(squares);
   let status;
 
@@ -46,8 +44,6 @@ function Board({ nextSymbol, squares, onPlay }) {
     }
     const nextSquares = squares.slice();
     nextSquares[index] = nextSymbol;
-    // setSquares(nextSquares);
-    // checkSymbol();
     onPlay(nextSquares);
   }
 
@@ -77,29 +73,16 @@ export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const currentSquares = history[currentMove];
-  const [nextSymbol, setNextSymbol] = useState("X");
-
-  function checkSymbol() {
-    switch (nextSymbol) {
-      case "X":
-        setNextSymbol("O");
-        break;
-      case "O":
-        setNextSymbol("X");
-        break;
-    }
-  }
+  const nextSymbol = currentMove % 2 === 0 ? "X" : "O";
 
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
-    checkSymbol();
   }
 
   function jumpToMove(nextMove) {
     setCurrentMove(nextMove);
-    setNextSymbol(nextMove % 2 === 0 ? "X" : "O");
   }
 
   const moves = history.map((squares, move) => {

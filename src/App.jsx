@@ -28,9 +28,8 @@ function calculateWinner(squares) {
   return null;
 }
 
-function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [nextSymbol, setNextSymbol] = useState("X");
+function Board({ nextSymbol, squares, onPlay }) {
+  // const [squares, setSquares] = useState(Array(9).fill(null));
 
   const winner = calculateWinner(squares);
   let status;
@@ -41,25 +40,15 @@ function Board() {
     status = nextSymbol + "'s turn.";
   }
 
-  function checkSymbol() {
-    switch (nextSymbol) {
-      case "X":
-        setNextSymbol("O");
-        break;
-      case "O":
-        setNextSymbol("X");
-        break;
-    }
-  }
-
   function handleClick(index) {
     if (squares[index] || winner) {
       return;
     }
     const nextSquares = squares.slice();
     nextSquares[index] = nextSymbol;
-    setSquares(nextSquares);
-    checkSymbol();
+    // setSquares(nextSquares);
+    // checkSymbol();
+    onPlay(nextSquares);
   }
 
   return (
@@ -85,10 +74,30 @@ function Board() {
 }
 
 export default function Game() {
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const currentSquares = history[history.length - 1];
+  const [nextSymbol, setNextSymbol] = useState("X");
+
+  function checkSymbol() {
+    switch (nextSymbol) {
+      case "X":
+        setNextSymbol("O");
+        break;
+      case "O":
+        setNextSymbol("X");
+        break;
+    }
+  }
+
+  function handlePlay(nextSquares) {
+    setHistory([...history, nextSquares]);
+    checkSymbol();
+  }
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
+        <Board nextSymbol={nextSymbol} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <ol>{/*TODO*/}</ol>

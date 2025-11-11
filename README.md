@@ -1,16 +1,23 @@
-# React + Vite
+# React Tic Tac Toe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React project built with Vite to follow React's official Tic-Tac-Toe [tutorial](https://react.dev/learn/tutorial-tic-tac-toe).
 
-Currently, two official plugins are available:
+You can clone this repository and run `npm run dev` to try it locally.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Current state
 
-## React Compiler
+Tutorial is finished. The application lets the user play the classic Tic-Tac-Toe with alternating turns (with an indicator), a winner indicator and a history of moves that can be used to travel between turns in a time machine fashion.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<img width="293" height="168" alt="image" src="https://github.com/user-attachments/assets/169ad472-db7f-4d90-8769-e730502009af" />
 
-## Expanding the ESLint configuration
+## Next up
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+I plan to tackle the objectives listed on the tutorials final section [Wrapping Up](https://react.dev/learn/tutorial-tic-tac-toe#wrapping-up). That is:
+
+- [ ] For the current move only, show “You are at move #…” instead of a button.
+- [ ] Rewrite Board to use two loops to make the squares instead of hardcoding them.
+- [ ] Add a toggle button that lets you sort the moves in either ascending or descending order.
+- [ ] When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw).
+- [ ] Display the location for each move in the format (row, col) in the move history list.
+
+Also, I intend to give the application a little styling.

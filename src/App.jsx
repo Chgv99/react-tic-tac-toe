@@ -87,6 +87,7 @@ export default function Game() {
 
   const moves = history.map((squares, move) => {
     let description;
+    if (move == history.length - 1) return;
     if (move > 0) {
       description = "Go to move #" + move;
     } else {
@@ -105,6 +106,7 @@ export default function Game() {
         <Board nextSymbol={nextSymbol} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
+        <h2>{`Turn #${currentMove}`}</h2>
         <ol>{moves}</ol>
       </div>
     </div>
